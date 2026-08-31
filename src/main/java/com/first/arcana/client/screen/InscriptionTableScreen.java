@@ -49,7 +49,7 @@ public class InscriptionTableScreen extends AbstractContainerScreen<InscriptionT
 
     // 어둠 + 금테 테마 — GuiGen 의 팔레트와 짝이다.
     private static final int COLOR_CELL_BG = 0xFF1C1926;
-    private static final int COLOR_CELL_BORDER = 0xFF7A611C;
+    private static final int COLOR_CELL_BORDER = 0xFF3A3448;
     private static final int COLOR_SELECTED = 0xFFF8C542;
     private static final int COLOR_HEADER = 0xFFE8C55A;
     private static final int COLOR_TEXT_GRAY = 0xFFA99BC0;
