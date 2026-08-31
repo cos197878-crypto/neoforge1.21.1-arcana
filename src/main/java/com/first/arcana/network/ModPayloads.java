@@ -16,6 +16,11 @@ public class ModPayloads {
         PayloadRegistrar registrar = event.registrar(PROTOCOL_VERSION);
 
         registrar.playToServer(
+                CycleSpellPayload.TYPE,
+                CycleSpellPayload.STREAM_CODEC,
+                CycleSpellPayload::handle);
+
+        registrar.playToServer(
                 CastSpellPayload.TYPE,
                 CastSpellPayload.STREAM_CODEC,
                 CastSpellPayload::handle);

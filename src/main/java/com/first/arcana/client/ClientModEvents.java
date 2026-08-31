@@ -4,8 +4,10 @@ import com.first.arcana.Arcana;
 import com.first.arcana.client.hud.ManaHudLayer;
 import com.first.arcana.client.model.FireballModel;
 import com.first.arcana.client.renderer.FireballRenderer;
+import com.first.arcana.client.screen.SpellBookScreen;
 import com.first.arcana.entity.ModEntityTypes;
 import com.first.arcana.item.ModItems;
+import com.first.arcana.menu.ModMenuTypes;
 import com.first.arcana.item.custom.ScrollItem;
 import com.first.arcana.spell.AbstractSpell;
 import com.first.arcana.spell.SpellSlot;
@@ -17,6 +19,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 /** 모드 버스 + 클라이언트 전용. NeoForge 21.1 에서는 bus 를 명시해야 안전하다. */
@@ -42,6 +45,11 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(FireballModel.LAYER_LOCATION, FireballModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
+        event.register(ModMenuTypes.SPELL_BOOK.get(), SpellBookScreen::new);
     }
 
     /** 렌더러를 등록하지 않으면 엔티티가 스폰되는 순간 게임이 튕긴다. */

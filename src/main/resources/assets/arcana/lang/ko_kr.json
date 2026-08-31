@@ -10,6 +10,10 @@
 
   "spell.arcana.firebolt": "파이어볼",
   "spell.arcana.frost_nova": "서리 폭발",
+  "spell.arcana.lightning_strike": "낙뢰",
+  "spell.arcana.heal": "치유",
+  "spell.arcana.life_drain": "생명력 흡수",
+  "spell.arcana.gust": "돌풍",
 
   "school.arcana.fire": "화염",
   "school.arcana.ice": "냉기",
@@ -39,6 +43,9 @@
   "tooltip.arcana.range": "사거리 %s 블록",
   "tooltip.arcana.burn": "점화 %s초",
   "tooltip.arcana.slow": "둔화 %s초 (%s단계)",
+  "tooltip.arcana.heal": "회복 %s",
+  "tooltip.arcana.drain": "흡수 %s",
+  "tooltip.arcana.knockback": "밀치기 %s",
 
   "tooltip.arcana.empty_spell_book": "새겨진 주문이 없습니다",
   "tooltip.arcana.blank_scroll": "새겨진 주문이 없습니다",

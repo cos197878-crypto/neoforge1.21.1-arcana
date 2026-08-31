@@ -42,7 +42,7 @@ public record CastSpellPayload(ResourceLocation spellId, int spellLevel) impleme
             if (!(context.player() instanceof ServerPlayer player)) {
                 return;
             }
-            SpellSlot held = findHeldSlot(player, payload.spellId());
+            SpellSlot held = findHeldSlot(player, payload.spellId(), payload.spellLevel());
             if (held == null) {
                 return;
             }
@@ -53,15 +53,18 @@ public record CastSpellPayload(ResourceLocation spellId, int spellLevel) impleme
         });
     }
 
-    /** 양손 중 하나에 든 스펠북에 해당 스펠이 실제로 들어 있는지 확인한다. */
-    private static SpellSlot findHeldSlot(Player player, ResourceLocation spellId) {
+    /**
+     * 양손 중 하나에 든 스펠북에 (스펠, 레벨) 짝이 실제로 들어 있는지 확인한다.
+     * id 만 대조하면 같은 주문이 레벨만 다르게 두 칸 있을 때 엉뚱한 레벨이 시전된다.
+     */
+    private static SpellSlot findHeldSlot(Player player, ResourceLocation spellId, int spellLevel) {
         for (InteractionHand hand : InteractionHand.values()) {
             ItemStack stack = player.getItemInHand(hand);
             if (!(stack.getItem() instanceof SpellBookItem)) {
                 continue;
             }
             for (SpellSlot slot : SpellBookItem.getContainer(stack).spells()) {
-                if (slot.spellId().equals(spellId)) {
+                if (slot.spellId().equals(spellId) && slot.level() == spellLevel) {
                     return slot;
                 }
             }

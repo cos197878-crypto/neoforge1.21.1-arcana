@@ -10,6 +10,10 @@
 
   "spell.arcana.firebolt": "Firebolt",
   "spell.arcana.frost_nova": "Frost Nova",
+  "spell.arcana.lightning_strike": "Lightning Strike",
+  "spell.arcana.heal": "Heal",
+  "spell.arcana.life_drain": "Life Drain",
+  "spell.arcana.gust": "Gust",
 
   "school.arcana.fire": "Fire",
   "school.arcana.ice": "Ice",
@@ -39,6 +43,9 @@
   "tooltip.arcana.range": "Range %s Blocks",
   "tooltip.arcana.burn": "Burn %ss",
   "tooltip.arcana.slow": "Slow %ss (Level %s)",
+  "tooltip.arcana.heal": "Heal %s",
+  "tooltip.arcana.drain": "Drain %s",
+  "tooltip.arcana.knockback": "Knockback %s",
 
   "tooltip.arcana.empty_spell_book": "No spells inscribed",
   "tooltip.arcana.blank_scroll": "No spell inscribed",

@@ -1,8 +1,12 @@
 package com.first.arcana.spell;
 
 import com.first.arcana.Arcana;
+import com.first.arcana.spell.spells.blood.LifeDrainSpell;
+import com.first.arcana.spell.spells.evocation.GustSpell;
 import com.first.arcana.spell.spells.fire.FireboltSpell;
+import com.first.arcana.spell.spells.holy.HealSpell;
 import com.first.arcana.spell.spells.ice.FrostNovaSpell;
+import com.first.arcana.spell.spells.lightning.LightningStrikeSpell;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +41,18 @@ public class SpellRegistry {
 
     public static final DeferredHolder<AbstractSpell, FrostNovaSpell> FROST_NOVA =
             SPELL_REGISTER.register("frost_nova", FrostNovaSpell::new);
+
+    public static final DeferredHolder<AbstractSpell, LightningStrikeSpell> LIGHTNING_STRIKE =
+            SPELL_REGISTER.register("lightning_strike", LightningStrikeSpell::new);
+
+    public static final DeferredHolder<AbstractSpell, HealSpell> HEAL =
+            SPELL_REGISTER.register("heal", HealSpell::new);
+
+    public static final DeferredHolder<AbstractSpell, LifeDrainSpell> LIFE_DRAIN =
+            SPELL_REGISTER.register("life_drain", LifeDrainSpell::new);
+
+    public static final DeferredHolder<AbstractSpell, GustSpell> GUST =
+            SPELL_REGISTER.register("gust", GustSpell::new);
 
     // 3) 헬퍼
     @Nullable

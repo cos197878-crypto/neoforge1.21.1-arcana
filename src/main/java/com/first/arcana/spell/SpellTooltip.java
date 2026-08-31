@@ -78,7 +78,9 @@ public class SpellTooltip {
     // ---------------- private ----------------
 
     private static MutableComponent castTimeLine(AbstractSpell spell) {
-        if (spell.getCastTimeTicks() <= 0) {
+        // 시전 시간 메커니즘은 아직 없다. INSTANT 주문은 castTimeTicks 값이 있어도
+        // 실제로는 즉시 발동하므로, 툴팁이 없는 기능을 표시하지 않게 한다.
+        if (spell.getCastType() == CastType.INSTANT || spell.getCastTimeTicks() <= 0) {
             return Component.translatable("tooltip.arcana.instant_cast");
         }
         return Component.translatable("tooltip.arcana.cast_time", format(spell.getCastTimeTicks() / 20.0));

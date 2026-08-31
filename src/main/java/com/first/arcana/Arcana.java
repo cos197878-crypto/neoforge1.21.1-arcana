@@ -5,6 +5,7 @@ import com.first.arcana.component.ModDataComponents;
 import com.first.arcana.config.ArcanaConfig;
 import com.first.arcana.entity.ModEntityTypes;
 import com.first.arcana.item.ModItems;
+import com.first.arcana.menu.ModMenuTypes;
 import com.first.arcana.spell.SpellRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -31,6 +32,7 @@ public class Arcana {
         ModDataComponents.register(modEventBus);
         ModItems.register(modEventBus);
         ModEntityTypes.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModAttachments.register(modEventBus);
 

@@ -5,6 +5,8 @@ import com.first.arcana.component.ModDataComponents;
 import com.first.arcana.component.SpellContainer;
 import com.first.arcana.item.custom.SpellBookItem;
 import com.first.arcana.network.CastSpellPayload;
+import com.first.arcana.attachment.ModAttachments;
+import com.first.arcana.network.CycleSpellPayload;
 import com.first.arcana.spell.SpellSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -26,6 +28,10 @@ public class ClientEvents {
         if (player == null) {
             return;
         }
+
+        // 쿨다운 HUD 예측: 서버는 값이 바뀐 틱에만 동기화 패킷을 보내므로, 클라이언트가
+        // 로컬로도 1씩 줄여야 표시가 1초 단위로 튀지 않는다. 패킷이 오면 copyFrom 이 덮는다.
+        player.getData(ModAttachments.MAGIC_DATA).tickCooldowns();
 
         // consumeClick 은 "눌린 횟수"를 하나씩 꺼내므로 while 로 비워야 입력이 밀리지 않는다.
         while (ModKeyMappings.CAST_SPELL.get().consumeClick()) {
@@ -62,7 +68,9 @@ public class ClientEvents {
         if (container.spells().isEmpty()) {
             return;
         }
+        // 원본은 서버 스택이다. 로컬 갱신은 HUD 즉시 반응용이고, 서버가 곧 같은 값으로 덮는다.
         int next = (SpellBookItem.getSelectedIndex(stack) + 1) % container.spells().size();
         stack.set(ModDataComponents.SELECTED_SLOT.get(), next);
+        PacketDistributor.sendToServer(new CycleSpellPayload());
     }
 }
