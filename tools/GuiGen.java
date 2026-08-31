@@ -4,21 +4,27 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * 주문서 GUI 배경(spell_book.png)을 생성한다. 빌드에 포함되지 않는다.
+ * 각인 테이블 GUI 배경(inscription_table.png)을 생성한다. 빌드에 포함되지 않는다.
  *
  * blit 의 6인자 버전은 텍스처가 256x256 이라고 가정하므로,
- * 256x256 캔버스의 좌상단에 176x166 패널을 그린다.
+ * 256x256 캔버스의 좌상단에 254x166 패널(본체 176 + 양피지 78)을 그린다.
  *
- * 슬롯 좌표는 SpellBookMenu 와 짝이다 — 옮기면 양쪽을 같이 고친다:
- *   주문 칸 5개  : (44 + i*18, 26)  -> 베벨 박스 (43 + i*18, 25)
- *   인벤토리     : (8 + c*18, 84 + r*18)
- *   핫바         : (8 + c*18, 142)
+ * 좌표는 InscriptionTableMenu / InscriptionTableScreen 과 짝이다 — 옮기면 같이 고친다:
+ *   책 칸        : 아이템 (18, 22)   -> 베벨 (17, 21)
+ *   투입 칸      : 아이템 (18, 58)   -> 베벨 (17, 57)
+ *   배출 칸      : 아이템 (213, 138) -> 베벨 (212, 137)
+ *   그리드 영역  : (60, 18) ~ (168, 82)  — 칸은 화면이 그린다
+ *   양피지 패널  : (176, 0) ~ (254, 166)
+ *   인벤토리     : (8 + c*18, 84 + r*18), 핫바 (8 + c*18, 142)
  *
  * 실행:  javac GuiGen.java && java GuiGen ../src/main/resources/assets/arcana/textures/gui
  */
 public class GuiGen {
-    private static final int PANEL_W = 176;
+    private static final int MAIN_W = 176;
     private static final int PANEL_H = 166;
+    private static final int PARCH_X = 176;
+    private static final int PARCH_W = 78;
+    private static final int TOTAL_W = MAIN_W + PARCH_W;
 
     private static final int BODY = 0xFFC6C6C6;
     private static final int BORDER = 0xFF000000;
@@ -27,24 +33,39 @@ public class GuiGen {
     private static final int SLOT_BG = 0xFF8B8B8B;
     private static final int SLOT_DARK = 0xFF373737;
 
+    private static final int GRID_BG = 0xFF14141E;
+    private static final int GRID_BORDER = 0xFF000000;
+
+    private static final int PARCHMENT = 0xFFF0E3C0;
+    private static final int PARCHMENT_SHADE = 0xFFDECBA0;
+    private static final int PARCH_BORDER = 0xFF3A2C1E;
+
+    private static final int ARROW = 0xFF6B6B6B;
+
     public static void main(String[] args) throws IOException {
         BufferedImage img = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
 
-        drawPanel(img);
+        drawMainPanel(img);
+        drawParchment(img);
 
-        // 책 칸
-        drawSlot(img, 16, 25);
-        // 주문 칸 5개
-        for (int i = 0; i < 5; i++) {
-            drawSlot(img, 70 + i * 18, 25);
-        }
-        // 플레이어 인벤토리 3줄
+        // 그리드 배경 (칸은 화면이 그린다)
+        fill(img, 59, 17, 110, 66, GRID_BORDER);
+        fill(img, 60, 18, 108, 64, GRID_BG);
+
+        // 책 칸 / 투입 칸 / 배출 칸
+        drawSlot(img, 17, 21);
+        drawSlot(img, 17, 57);
+        drawSlot(img, 212, 137);
+
+        // 투입 칸 -> 그리드 화살표
+        drawArrow(img, 39, 62);
+
+        // 인벤토리 3줄 + 핫바
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 drawSlot(img, 7 + col * 18, 83 + row * 18);
             }
         }
-        // 핫바
         for (int col = 0; col < 9; col++) {
             drawSlot(img, 7 + col * 18, 141);
         }
@@ -56,20 +77,28 @@ public class GuiGen {
         System.out.println("written: " + out.getPath());
     }
 
-    private static void drawPanel(BufferedImage img) {
-        fill(img, 0, 0, PANEL_W, PANEL_H, BODY);
-
-        // 안쪽 베벨: 위/왼쪽 밝게, 아래/오른쪽 어둡게 (2px)
-        fill(img, 1, 1, PANEL_W - 2, 2, LIGHT);
+    private static void drawMainPanel(BufferedImage img) {
+        fill(img, 0, 0, MAIN_W, PANEL_H, BODY);
+        fill(img, 1, 1, MAIN_W - 2, 2, LIGHT);
         fill(img, 1, 1, 2, PANEL_H - 2, LIGHT);
-        fill(img, 1, PANEL_H - 3, PANEL_W - 2, 2, SHADOW);
-        fill(img, PANEL_W - 3, 1, 2, PANEL_H - 2, SHADOW);
-
-        // 바깥 테두리 1px. 모서리 픽셀은 비워 바닐라처럼 살짝 둥글게 보이게 한다.
-        fill(img, 1, 0, PANEL_W - 2, 1, BORDER);
-        fill(img, 1, PANEL_H - 1, PANEL_W - 2, 1, BORDER);
+        fill(img, 1, PANEL_H - 3, MAIN_W - 2, 2, SHADOW);
+        fill(img, MAIN_W - 3, 1, 2, PANEL_H - 2, SHADOW);
+        fill(img, 1, 0, MAIN_W - 2, 1, BORDER);
+        fill(img, 1, PANEL_H - 1, MAIN_W - 2, 1, BORDER);
         fill(img, 0, 1, 1, PANEL_H - 2, BORDER);
-        fill(img, PANEL_W - 1, 1, 1, PANEL_H - 2, BORDER);
+    }
+
+    private static void drawParchment(BufferedImage img) {
+        fill(img, PARCH_X, 0, PARCH_W, PANEL_H, PARCHMENT);
+        // 가장자리 그늘
+        fill(img, PARCH_X, 0, PARCH_W, 3, PARCHMENT_SHADE);
+        fill(img, PARCH_X, PANEL_H - 3, PARCH_W, 3, PARCHMENT_SHADE);
+        fill(img, PARCH_X + PARCH_W - 3, 0, 3, PANEL_H, PARCHMENT_SHADE);
+        // 테두리와 본체 사이 이음매
+        fill(img, PARCH_X, 0, 1, PANEL_H, PARCH_BORDER);
+        fill(img, PARCH_X + PARCH_W - 1, 0, 1, PANEL_H, PARCH_BORDER);
+        fill(img, PARCH_X, 0, PARCH_W, 1, PARCH_BORDER);
+        fill(img, PARCH_X, PANEL_H - 1, PARCH_W, 1, PARCH_BORDER);
     }
 
     /** (x, y)는 18x18 베벨 박스의 좌상단. 아이템이 놓이는 곳은 (x+1, y+1)의 16x16. */
@@ -79,6 +108,14 @@ public class GuiGen {
         fill(img, x, y, 1, 17, SLOT_DARK);
         fill(img, x + 1, y + 17, 17, 1, LIGHT);
         fill(img, x + 17, y + 1, 1, 17, LIGHT);
+    }
+
+    /** 오른쪽을 가리키는 작은 화살표. (x, y)는 몸통 왼쪽 중앙. */
+    private static void drawArrow(BufferedImage img, int x, int y) {
+        fill(img, x, y - 1, 10, 3, ARROW);
+        for (int d = 0; d < 4; d++) {
+            fill(img, x + 10 + d, y - 4 + d, 1, 9 - d * 2, ARROW);
+        }
     }
 
     private static void fill(BufferedImage img, int x, int y, int w, int h, int argb) {

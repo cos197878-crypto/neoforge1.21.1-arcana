@@ -8,6 +8,9 @@
 
   "block.arcana.inscription_table": "각인 테이블",
   "container.arcana.inscription_table": "각인 테이블",
+  "screen.arcana.spell_selection": "주문 선택",
+  "screen.arcana.level": "레벨 %s",
+  "screen.arcana.extract_hint": "Shift+클릭: 꺼내기",
 
   "entity.arcana.fireball": "화염구",
 

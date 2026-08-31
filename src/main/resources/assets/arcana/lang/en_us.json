@@ -8,6 +8,9 @@
 
   "block.arcana.inscription_table": "Inscription Table",
   "container.arcana.inscription_table": "Inscription Table",
+  "screen.arcana.spell_selection": "Spell Selection",
+  "screen.arcana.level": "Level %s",
+  "screen.arcana.extract_hint": "Shift+Click: Extract",
 
   "entity.arcana.fireball": "Fireball",
 
