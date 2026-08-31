@@ -1,0 +1,16 @@
+# Gradle
+.gradle/
+build/
+
+# 실행 환경 (월드 데이터, 로그)
+run/
+runs/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+eclipse/
+
+# 기타
+*.log

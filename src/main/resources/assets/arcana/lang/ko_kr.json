@@ -1,0 +1,52 @@
+{
+  "itemGroup.arcana.main": "아르카나",
+
+  "item.arcana.spell_book": "주문서",
+  "item.arcana.scroll": "빈 두루마리",
+  "item.arcana.mana_crystal": "마나 수정",
+  "item.arcana.scroll.named": "%s 두루마리",
+
+  "entity.arcana.fireball": "화염구",
+
+  "spell.arcana.firebolt": "파이어볼",
+  "spell.arcana.frost_nova": "서리 폭발",
+
+  "school.arcana.fire": "화염",
+  "school.arcana.ice": "냉기",
+  "school.arcana.lightning": "번개",
+  "school.arcana.holy": "신성",
+  "school.arcana.blood": "혈마법",
+  "school.arcana.evocation": "환기",
+
+  "rarity.arcana.common": "흔함",
+  "rarity.arcana.uncommon": "고급",
+  "rarity.arcana.rare": "희귀",
+  "rarity.arcana.epic": "영웅",
+  "rarity.arcana.legendary": "전설",
+
+  "tooltip.arcana.scroll_subtitle": "아르카나 두루마리",
+  "tooltip.arcana.spell_book_subtitle": "아르카나 주문서",
+  "tooltip.arcana.level": "레벨 %s (%s)",
+  "tooltip.arcana.cast_time": "%ss 시전 시간",
+  "tooltip.arcana.instant_cast": "즉시 시전",
+  "tooltip.arcana.in_spell_book": "주문서 내:",
+  "tooltip.arcana.mana_cost": "마나 %s",
+  "tooltip.arcana.mana_per_second": "초당 마나 %s",
+  "tooltip.arcana.cooldown": "쿨타임 %ss",
+
+  "tooltip.arcana.damage": "피해 %s",
+  "tooltip.arcana.radius": "반경 %s 블록",
+  "tooltip.arcana.range": "사거리 %s 블록",
+  "tooltip.arcana.burn": "점화 %s초",
+  "tooltip.arcana.slow": "둔화 %s초 (%s단계)",
+
+  "tooltip.arcana.empty_spell_book": "새겨진 주문이 없습니다",
+  "tooltip.arcana.blank_scroll": "새겨진 주문이 없습니다",
+
+  "message.arcana.not_enough_mana": "마나가 부족합니다",
+  "hud.arcana.cooldown": "%s초",
+
+  "key.categories.arcana": "아르카나",
+  "key.arcana.cast_spell": "주문 시전",
+  "key.arcana.next_spell": "다음 주문"
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arcana:item/scroll"
+  },
+  "overrides": [
+    { "predicate": { "arcana:school": 1 }, "model": "arcana:item/scroll_fire" },
+    { "predicate": { "arcana:school": 2 }, "model": "arcana:item/scroll_ice" },
+    { "predicate": { "arcana:school": 3 }, "model": "arcana:item/scroll_lightning" },
+    { "predicate": { "arcana:school": 4 }, "model": "arcana:item/scroll_holy" },
+    { "predicate": { "arcana:school": 5 }, "model": "arcana:item/scroll_blood" },
+    { "predicate": { "arcana:school": 6 }, "model": "arcana:item/scroll_evocation" }
+  ]
+}

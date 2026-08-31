@@ -1,0 +1,52 @@
+{
+  "itemGroup.arcana.main": "Arcana",
+
+  "item.arcana.spell_book": "Spell Book",
+  "item.arcana.scroll": "Blank Scroll",
+  "item.arcana.mana_crystal": "Mana Crystal",
+  "item.arcana.scroll.named": "Scroll of %s",
+
+  "entity.arcana.fireball": "Fireball",
+
+  "spell.arcana.firebolt": "Firebolt",
+  "spell.arcana.frost_nova": "Frost Nova",
+
+  "school.arcana.fire": "Fire",
+  "school.arcana.ice": "Ice",
+  "school.arcana.lightning": "Lightning",
+  "school.arcana.holy": "Holy",
+  "school.arcana.blood": "Blood",
+  "school.arcana.evocation": "Evocation",
+
+  "rarity.arcana.common": "Common",
+  "rarity.arcana.uncommon": "Uncommon",
+  "rarity.arcana.rare": "Rare",
+  "rarity.arcana.epic": "Epic",
+  "rarity.arcana.legendary": "Legendary",
+
+  "tooltip.arcana.scroll_subtitle": "Arcana Scroll",
+  "tooltip.arcana.spell_book_subtitle": "Arcana Spell Book",
+  "tooltip.arcana.level": "Level %s (%s)",
+  "tooltip.arcana.cast_time": "%ss Cast Time",
+  "tooltip.arcana.instant_cast": "Instant Cast",
+  "tooltip.arcana.in_spell_book": "In Spell Book:",
+  "tooltip.arcana.mana_cost": "Mana %s",
+  "tooltip.arcana.mana_per_second": "Mana Per Second %s",
+  "tooltip.arcana.cooldown": "Cooldown %ss",
+
+  "tooltip.arcana.damage": "Damage %s",
+  "tooltip.arcana.radius": "Radius %s Blocks",
+  "tooltip.arcana.range": "Range %s Blocks",
+  "tooltip.arcana.burn": "Burn %ss",
+  "tooltip.arcana.slow": "Slow %ss (Level %s)",
+
+  "tooltip.arcana.empty_spell_book": "No spells inscribed",
+  "tooltip.arcana.blank_scroll": "No spell inscribed",
+
+  "message.arcana.not_enough_mana": "Not enough mana",
+  "hud.arcana.cooldown": "%ss",
+
+  "key.categories.arcana": "Arcana",
+  "key.arcana.cast_spell": "Cast Spell",
+  "key.arcana.next_spell": "Next Spell"
+}
