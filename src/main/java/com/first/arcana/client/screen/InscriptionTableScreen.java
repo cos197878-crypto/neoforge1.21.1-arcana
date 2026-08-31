@@ -25,7 +25,7 @@ import java.util.List;
  * 각인 테이블 화면 — Iron's Spells 방식.
  *
  * 책이 없으면 중앙은 빈 어둠뿐이다. 책을 놓으면 책 용량만큼 칸이 나타나고,
- * 클릭으로 주문을 선택하면 오른쪽 양피지에 상세가 표시된다.
+ * 클릭으로 주문을 선택하면 오른쪽 상세 패널에 정보가 표시된다.
  * Shift+클릭은 그 주문을 배출 칸으로 꺼낸다.
  *
  * 그리드는 아이템 슬롯이 아니라 그림이다 — 클릭은 바닐라 메뉴 버튼 패킷으로
@@ -47,14 +47,15 @@ public class InscriptionTableScreen extends AbstractContainerScreen<InscriptionT
     private static final int PANEL_X = 176;
     private static final int PANEL_W = 78;
 
-    private static final int COLOR_CELL_BG = 0xFF4A4436;
-    private static final int COLOR_CELL_BORDER = 0xFF2A261E;
+    // 어둠 + 금테 테마 — GuiGen 의 팔레트와 짝이다.
+    private static final int COLOR_CELL_BG = 0xFF1C1926;
+    private static final int COLOR_CELL_BORDER = 0xFF7A611C;
     private static final int COLOR_SELECTED = 0xFFF8C542;
-    private static final int COLOR_HEADER = 0xFF3A2C1E;
-    private static final int COLOR_TEXT_GRAY = 0xFF6B5B47;
-    private static final int COLOR_MANA = 0xFF2A4BD7;
-    private static final int COLOR_CAST = 0xFF1F7A8C;
-    private static final int COLOR_INFO = 0xFF2E7D32;
+    private static final int COLOR_HEADER = 0xFFE8C55A;
+    private static final int COLOR_TEXT_GRAY = 0xFFA99BC0;
+    private static final int COLOR_MANA = 0xFF7FA3FF;
+    private static final int COLOR_CAST = 0xFF6FD8E8;
+    private static final int COLOR_INFO = 0xFF7FE07F;
 
     /** 렌더링은 매 프레임 돌므로, 컨테이너가 바뀔 때만 아이콘 스택을 다시 만든다. */
     private SpellContainer cachedContainer;
@@ -93,6 +94,14 @@ public class InscriptionTableScreen extends AbstractContainerScreen<InscriptionT
         }
     }
 
+    /** 기본 라벨 색(짙은 회색)은 어두운 배경에서 안 보인다. 금색/밝은 회색으로 그린다. */
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, COLOR_HEADER, false);
+        guiGraphics.drawString(this.font, this.playerInventoryTitle,
+                this.inventoryLabelX, this.inventoryLabelY, COLOR_TEXT_GRAY, false);
+    }
+
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
@@ -101,7 +110,7 @@ public class InscriptionTableScreen extends AbstractContainerScreen<InscriptionT
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
-    // ---------------- 양피지 상세 패널 ----------------
+    // ---------------- 상세 패널 ----------------
 
     private void renderSelectionPanel(GuiGraphics guiGraphics) {
         int panelLeft = this.leftPos + PANEL_X;
