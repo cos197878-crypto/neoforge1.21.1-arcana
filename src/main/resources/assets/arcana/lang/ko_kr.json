@@ -6,6 +6,9 @@
   "item.arcana.mana_crystal": "마나 수정",
   "item.arcana.scroll.named": "%s 두루마리",
 
+  "block.arcana.inscription_table": "각인 테이블",
+  "container.arcana.inscription_table": "각인 테이블",
+
   "entity.arcana.fireball": "화염구",
 
   "spell.arcana.firebolt": "파이어볼",

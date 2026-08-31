@@ -1,6 +1,7 @@
 package com.first.arcana;
 
 import com.first.arcana.attachment.ModAttachments;
+import com.first.arcana.block.ModBlocks;
 import com.first.arcana.component.ModDataComponents;
 import com.first.arcana.config.ArcanaConfig;
 import com.first.arcana.entity.ModEntityTypes;
@@ -30,6 +31,7 @@ public class Arcana {
 
         SpellRegistry.register(modEventBus);
         ModDataComponents.register(modEventBus);
+        ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModEntityTypes.register(modEventBus);
         ModMenuTypes.register(modEventBus);

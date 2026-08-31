@@ -24,6 +24,7 @@ public class ModCreativeTabs {
                     .title(Component.translatable("itemGroup." + Arcana.MOD_ID + ".main"))
                     .icon(() -> new ItemStack(ModItems.SPELL_BOOK.get()))
                     .displayItems((params, output) -> {
+                        output.accept(ModItems.INSCRIPTION_TABLE.get());
                         output.accept(ModItems.SPELL_BOOK.get());
                         output.accept(ModItems.MANA_CRYSTAL.get());
                         output.accept(ModItems.SCROLL.get());

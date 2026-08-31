@@ -1,6 +1,7 @@
 package com.first.arcana.item;
 
 import com.first.arcana.Arcana;
+import com.first.arcana.block.ModBlocks;
 import com.first.arcana.item.custom.ScrollItem;
 import com.first.arcana.item.custom.SpellBookItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +23,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> MANA_CRYSTAL =
             ITEMS.registerSimpleItem("mana_crystal", new Item.Properties());
+
+    /** 각인 테이블 블록 아이템. 번역 키가 block.arcana.inscription_table 로 잡힌다. */
+    public static final DeferredItem<net.minecraft.world.item.BlockItem> INSCRIPTION_TABLE =
+            ITEMS.registerSimpleBlockItem("inscription_table", ModBlocks.INSCRIPTION_TABLE);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

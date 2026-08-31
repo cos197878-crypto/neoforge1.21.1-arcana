@@ -6,6 +6,9 @@
   "item.arcana.mana_crystal": "Mana Crystal",
   "item.arcana.scroll.named": "Scroll of %s",
 
+  "block.arcana.inscription_table": "Inscription Table",
+  "container.arcana.inscription_table": "Inscription Table",
+
   "entity.arcana.fireball": "Fireball",
 
   "spell.arcana.firebolt": "Firebolt",

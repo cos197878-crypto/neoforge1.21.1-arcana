@@ -1,7 +1,6 @@
 package com.first.arcana.item.custom;
 
 import com.first.arcana.component.ModDataComponents;
-import com.first.arcana.menu.SpellBookMenu;
 import com.first.arcana.component.SpellContainer;
 import com.first.arcana.spell.AbstractSpell;
 import com.first.arcana.spell.SpellSlot;
@@ -11,8 +10,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -39,19 +36,7 @@ public class SpellBookItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // 웅크리기 + 우클릭 -> 두루마리를 넣고 빼는 화면을 연다.
-        if (player.isShiftKeyDown()) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                int invIndex = (hand == InteractionHand.MAIN_HAND)
-                        ? serverPlayer.getInventory().selected
-                        : Inventory.SLOT_OFFHAND;
-                serverPlayer.openMenu(new SimpleMenuProvider(
-                        (id, inv, p) -> new SpellBookMenu(id, inv, invIndex),
-                        stack.getHoverName()), buf -> buf.writeVarInt(invIndex));
-            }
-            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
-        }
-
+        // 두루마리 각인/제거는 각인 테이블 블록에서 한다.
         SpellSlot slot = getSelectedSlot(stack);
         if (slot == null) {
             return InteractionResultHolder.fail(stack);

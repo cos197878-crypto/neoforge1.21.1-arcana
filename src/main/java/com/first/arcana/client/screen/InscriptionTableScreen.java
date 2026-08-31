@@ -1,19 +1,19 @@
 package com.first.arcana.client.screen;
 
 import com.first.arcana.Arcana;
-import com.first.arcana.menu.SpellBookMenu;
+import com.first.arcana.menu.InscriptionTableMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-/** 주문서 화면. 슬롯 로직은 전부 메뉴에 있고 여기는 그리기만 한다. */
-public class SpellBookScreen extends AbstractContainerScreen<SpellBookMenu> {
-    /** 256x256 텍스처의 좌상단에 176x166 패널이 그려져 있다 (tools/GuiGen.java 로 생성). */
-    private static final ResourceLocation TEXTURE = Arcana.id("textures/gui/spell_book.png");
+/** 각인 테이블 화면. 슬롯 로직은 전부 메뉴에 있고 여기는 그리기만 한다. */
+public class InscriptionTableScreen extends AbstractContainerScreen<InscriptionTableMenu> {
+    /** 256x256 텍스처의 좌상단에 176x166 패널 (tools/GuiGen.java 로 생성). */
+    private static final ResourceLocation TEXTURE = Arcana.id("textures/gui/inscription_table.png");
 
-    public SpellBookScreen(SpellBookMenu menu, Inventory playerInventory, Component title) {
+    public InscriptionTableScreen(InscriptionTableMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
 

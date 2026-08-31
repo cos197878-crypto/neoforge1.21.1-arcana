@@ -32,9 +32,11 @@ public class GuiGen {
 
         drawPanel(img);
 
+        // 책 칸
+        drawSlot(img, 16, 25);
         // 주문 칸 5개
         for (int i = 0; i < 5; i++) {
-            drawSlot(img, 43 + i * 18, 25);
+            drawSlot(img, 70 + i * 18, 25);
         }
         // 플레이어 인벤토리 3줄
         for (int row = 0; row < 3; row++) {
@@ -49,7 +51,7 @@ public class GuiGen {
 
         File dir = new File(args[0]);
         dir.mkdirs();
-        File out = new File(dir, "spell_book.png");
+        File out = new File(dir, "inscription_table.png");
         ImageIO.write(img, "PNG", out);
         System.out.println("written: " + out.getPath());
     }

@@ -2,9 +2,10 @@ package com.first.arcana.client;
 
 import com.first.arcana.Arcana;
 import com.first.arcana.client.hud.ManaHudLayer;
+import com.first.arcana.client.hud.SpellBarHudLayer;
 import com.first.arcana.client.model.FireballModel;
 import com.first.arcana.client.renderer.FireballRenderer;
-import com.first.arcana.client.screen.SpellBookScreen;
+import com.first.arcana.client.screen.InscriptionTableScreen;
 import com.first.arcana.entity.ModEntityTypes;
 import com.first.arcana.item.ModItems;
 import com.first.arcana.menu.ModMenuTypes;
@@ -35,6 +36,7 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, Arcana.id("mana_bar"), new ManaHudLayer());
+        event.registerAbove(VanillaGuiLayers.HOTBAR, Arcana.id("spell_bar"), new SpellBarHudLayer());
     }
 
     /**
@@ -49,7 +51,7 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
-        event.register(ModMenuTypes.SPELL_BOOK.get(), SpellBookScreen::new);
+        event.register(ModMenuTypes.INSCRIPTION_TABLE.get(), InscriptionTableScreen::new);
     }
 
     /** 렌더러를 등록하지 않으면 엔티티가 스폰되는 순간 게임이 튕긴다. */

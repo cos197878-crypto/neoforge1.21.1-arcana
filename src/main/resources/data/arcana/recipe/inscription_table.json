@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": { "item": "arcana:mana_crystal" },
+    "P": { "tag": "minecraft:planks" }
+  },
+  "pattern": [
+    " C ",
+    "PPP",
+    "P P"
+  ],
+  "result": {
+    "count": 1,
+    "id": "arcana:inscription_table"
+  }
+}
